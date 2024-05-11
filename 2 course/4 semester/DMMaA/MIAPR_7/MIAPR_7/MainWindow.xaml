@@ -1,0 +1,20 @@
+﻿<Window x:Class="MIAPR_7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MIAPR_7" Height="720" Width="1280">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Margin="10">
+                <Button Click="Generate_Click" Width="171" Height="25" Content="Generate"/>
+                <Button Click="Validate_Click" Width="171" Height="25" Content="Validate"/>
+                <Button Click="Clean_Click" Width="171" Height="25" Content="Clean"/>
+                <Label x:Name="ResultLabel" Width="170" Height="Auto" Content="" HorizontalContentAlignment="Center" Foreground="#006400" FontSize="14"/>
+            </StackPanel>
+
+            <Canvas x:Name="Canvas" Background="White" Width="1060" Height="700" Margin="10,10,0,0" MouseDown="Canvas_MouseDown" MouseRightButtonDown="Canvas_OnMouseRightButtonDown"/>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,73 @@
+﻿<Window x:Class="KSIS_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KSIS_1"
+        mc:Ignorable="d"
+        Title="Диспетчер сетевых интерфейсов" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Компьютер: "/>
+            <TextBlock Name="ComputerNameTextBlock"/>
+            <TextBlock Text="MAC-адрес: " Margin="20 0 0 0"/>
+            <TextBlock Name="MacAddressTextBlock"/>
+            <TextBlock Text="IP-адрес: " Margin="20 0 0 0"/>
+            <TextBlock Name="IpAddressTextBlock"/>
+        </StackPanel>
+        
+        <TabControl Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="10">
+            <TabItem Header="Все сетевые интерфейсы">
+                <ListView MouseDoubleClick="ListViewItem_MouseDoubleClick" FontSize="13" Name="NetworkInterfacesListView" >
+                    
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="Auto" Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="MAC-адрес" DisplayMemberBinding="{Binding MAC}"/>
+                            <GridViewColumn Header="Детали" DisplayMemberBinding="{Binding Details}"/>
+                            <GridViewColumn Header="IP-адрес" DisplayMemberBinding="{Binding IpAddress}"/>
+                            <GridViewColumn Header="Маска IP-адреса" DisplayMemberBinding="{Binding IPv4Mask}"/>
+                            <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                            <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                        </GridView>
+                    </ListView.View>
+                    
+                </ListView>
+            </TabItem>
+            <TabItem Header="Локальные сетевые интерфейсы">
+                <ListView MouseDoubleClick="ListViewItem_MouseDoubleClick" FontSize="13" Name="LocalNetworkInterfacesListView">
+                    <ListView.View> 
+                        <GridView>
+                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="MAC-адрес" DisplayMemberBinding="{Binding MAC}"/>
+                            <GridViewColumn Header="Детали" DisplayMemberBinding="{Binding Details}"/>
+                            <GridViewColumn Header="IP-адрес" DisplayMemberBinding="{Binding IpAddress}"/>
+                            <GridViewColumn Header="Маска IP-адреса" DisplayMemberBinding="{Binding IPv4Mask}"/>
+                            <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                            <GridViewColumn Header="Тип" DisplayMemberBinding="{Binding Type}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        
+        <Button Grid.Row="0" Grid.Column="1" Margin="3" Width="Auto" Content="Обновить информацию"
+                Click="ButtonBase_OnClick">
+        </Button>
+    </Grid>
+</Window>

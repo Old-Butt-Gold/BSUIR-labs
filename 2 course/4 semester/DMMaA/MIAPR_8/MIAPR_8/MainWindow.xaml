@@ -1,0 +1,53 @@
+﻿<Window x:Class="MIAPR_8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MIAPR_8"
+        mc:Ignorable="d"
+        Title="MIAPR_8" Height="720" Width="1280" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" >
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="Close" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CommandBinding_OnExecuted" />
+    </Window.CommandBindings>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="GradientBrushOnButton" StartPoint="0.5,1" EndPoint="0.5,0">
+            <GradientStop Color="LightSkyBlue" Offset="0" />
+            <GradientStop Color="PaleGreen" Offset="0.5" />
+            <GradientStop Color="LightPink" Offset="1" />
+        </LinearGradientBrush>
+                        
+            <LinearGradientBrush x:Key="GradientBrush" StartPoint="0.5,1" EndPoint="0.5,0">
+                <GradientStop Color="Yellow" Offset="0" />
+                <GradientStop Color="GreenYellow" Offset="0.5" />
+                <GradientStop Color="Aqua" Offset="1" />
+            </LinearGradientBrush> 
+    </Window.Resources>
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Canvas Width="1080" Height="700" x:Name="Canvas" Grid.Column="0"/>
+        <Border Name="Border" Grid.Column="0" BorderBrush="White" BorderThickness="2"
+                Background="Transparent" 
+                MouseMove="Border_OnMouseMove"
+                MouseLeftButtonDown="Canvas_OnMouseLeftButtonDown" 
+                MouseRightButtonDown="Canvas_OnMouseRightButtonDown" Height="700"/>
+        
+        <Border Grid.Column="1" BorderThickness="2" BorderBrush="White" VerticalAlignment="Center">
+        <DockPanel DockPanel.Dock="Right" MinHeight="200" MinWidth="200" Background="MidnightBlue" VerticalAlignment="Center" Height="Auto">
+            
+                <Button Click="Generate_Click" Background="{StaticResource GradientBrush}" DockPanel.Dock="Top" Width="171" Height="25" Content="Генерация"/>
+                <Button Click="Synthesize_Click" Background="{StaticResource GradientBrush}" DockPanel.Dock="Top" Width="171" Height="25" Content="Синтезировать грамматику"/>
+                <Button Click="Clean_Click" Background="{StaticResource GradientBrush}" DockPanel.Dock="Top" Width="171" Height="25" Content="Очистить"/>
+                <Label x:Name="ResultLabel" Foreground="{StaticResource GradientBrushOnButton}" Width="Auto" DockPanel.Dock="Bottom" Height="Auto" HorizontalContentAlignment="Center" FontSize="14"/>
+                <Label x:Name="GrammarLabel" Foreground="{StaticResource GradientBrushOnButton}" Width="Auto" DockPanel.Dock="Bottom" Height="Auto" HorizontalContentAlignment="Center" FontSize="14" />
+
+        </DockPanel>
+        </Border>
+    </Grid>
+</Window>

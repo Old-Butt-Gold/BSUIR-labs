@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+MAC1=$(cat /sys/class/net/wlo1/address)
+MAC2=$(cat /sys/class/net/eno1/address)
+
+echo ""
+echo -e "\033[43mMAC addresses are: \033[0m"
+echo -e "\033[0;34m wlo1 $MAC1\033[0m"
+echo -e "\033[0;34m eno1 $MAC2\033[0m"
+echo ""
+
+ping_ip() {
+    ip=$1
+    ping -c 1 -W 1 "$ip" > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "\033[0;34mHost $ip is live\033[0m"
+        echo ""
+    fi
+}
+echo -e "\033[43m Enumerating live hosts ipv4: \033[0m"
+
+for i in {0..255}; do
+    for j in {0..255}; do
+        ip="192.168.$i.$j"
+        ping_ip "$ip" &
+    done
+done
+
+wait

@@ -1,0 +1,43 @@
+fn main() {
+    if (12) {
+        println!("2");
+        println!("5");
+    }
+    loop
+    {
+        println!("1");
+        println!("2");
+	println!("3");
+    }
+    loop
+	println!("5");
+    println!("M1");
+    println!("M2");
+    if (12)
+	loop {
+	    	println!("6");
+	    	println!("7");
+            }
+    else
+	println!("7");
+    println!("END");
+    if (15) {
+	println!("HELLO");
+    }
+    else {
+	println!("WORLD");
+    }
+    if (15)
+        println!("GOODBYE");
+    else {
+	println!("GOOD");
+	println!("BYE");
+    }
+    if (16) {
+         loop
+             println!("CT3");
+    }
+    else
+        println!("NONONO");
+
+}

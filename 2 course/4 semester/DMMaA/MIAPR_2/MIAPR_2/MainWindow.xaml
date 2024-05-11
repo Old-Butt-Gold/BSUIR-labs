@@ -1,0 +1,117 @@
+﻿<Window x:Class="MIAPR_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MIAPR_2"
+        mc:Ignorable="d"
+        Title="MIAPR_2" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition  Height="40*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock 
+                    FontSize="15" 
+                    TextAlignment="Center" 
+                    VerticalAlignment="Center"
+                    FontFamily="Times New Roman" 
+                    Grid.Row="0" 
+                    Margin="6"
+                    Grid.ColumnSpan="4">
+                    Количество точек
+                </TextBlock>
+                <Slider 
+                    IsSnapToTickEnabled="True" 
+                    Name="DotsSlider" 
+                    Grid.Row="1"
+                    Margin="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" 
+                    Minimum="1000"
+                    Maximum="100000"
+                    SmallChange="1"
+                    Value="1000"
+                    FontFamily="Times New Roman" />
+                <TextBlock 
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Margin="5" 
+                    Text="{Binding ElementName=DotsSlider, Path=Value}" />
+            </Grid>
+        </Border>
+        
+        <Border Grid.Column="0" Grid.Row="2" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock 
+                    Grid.Row="0"
+                    Grid.ColumnSpan="4"
+                    FontSize="15"
+                    TextAlignment="Center"
+                    FontFamily="Times New Roman"
+                    Margin="6"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    Обработка
+                </TextBlock>
+                <Button 
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    Margin="9"
+                    Name="ButtonProcessing"
+                    Click="ButtonProcessing_OnClick"
+                    FontFamily="Times New Roman">
+                    Рассчитать
+                </Button>
+            </Grid>
+        </Border>
+        
+        <Border
+            Background="Black"
+            BorderBrush="Aqua"
+            Name="BorderImage" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="3" 
+            Grid.Row="0"
+            Grid.RowSpan="3">
+            <Image Name="Canvas" />
+        </Border>
+    </Grid>
+</Window>

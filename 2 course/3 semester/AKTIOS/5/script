@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Проверка наличия аргументов командной строки
+if [ $# -ne 2 ]; then
+    echo "Использование: $0 <каталог> <строка>"
+    exit 1
+fi
+
+# Функция для поиска строки в файле и вывода информации о нем
+search_in_file() {
+    local file="$1"
+    local search_string="$2"
+
+    # Проверяем доступ на чтение к файлу
+    if [ -r "$file" ]; then
+        # Поиск строки в файле
+        if grep -q "$search_string" "$file"; then
+            # Выводим полный путь, имя файла и его размер
+            echo "Файл: $file"
+            echo "Размер: $(stat -c %s "$file") байт"
+        fi
+    else
+        echo "Нет доступа на чтение к файлу: $file"
+    fi
+}
+
+# Функция для рекурсивного поиска в каталоге
+search_in_directory() {
+    local directory="$1"
+    local search_string="$2"
+
+    # Проверяем доступ к выполнению каталога
+    if [ -x "$directory" ]; then
+        # Перебираем файлы и подкаталоги в текущем каталоге
+        for item in "$directory"/*; do #/* для просмотра всего содержимого каталога
+            if [ -d "$item" ]; then
+                search_in_directory "$item" "$search_string"
+            elif [ -f "$item" ]; then
+                search_in_file "$item" "$search_string"
+            fi
+        done
+    else
+        echo "Нет доступа к каталогу: $directory"
+    fi
+}
+
+# Вызываем функцию поиска в заданном каталоге
+search_in_directory "$1" "$2"

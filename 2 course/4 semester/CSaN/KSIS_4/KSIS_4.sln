@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSIS_4", "KSIS_4\KSIS_4.csproj", "{02E258B3-6105-4BD4-9E2B-C91B4E72DDB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02E258B3-6105-4BD4-9E2B-C91B4E72DDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E258B3-6105-4BD4-9E2B-C91B4E72DDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E258B3-6105-4BD4-9E2B-C91B4E72DDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E258B3-6105-4BD4-9E2B-C91B4E72DDB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

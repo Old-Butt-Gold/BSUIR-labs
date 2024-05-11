@@ -1,0 +1,22 @@
+.subject {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.greeting {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.body {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.signature {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}

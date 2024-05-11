@@ -1,0 +1,132 @@
+﻿<Window x:Class="MIAPR_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DMMaA_LAB_3"
+        mc:Ignorable="d"
+        Title="MIAPR_3" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock FontSize="15" TextAlignment="Center" FontFamily="Open Sans" Grid.Row="0" Margin="6"
+                           Grid.ColumnSpan="3">
+                    P(C1)
+                </TextBlock>
+                <Slider Name="SliderPC1" Grid.Row="1" Margin="5" Grid.ColumnSpan="3"
+                        Minimum="0" Maximum="1" SmallChange="0.0000000001" Value="0.5" TickPlacement="BottomRight" />
+                <TextBlock Grid.Row="1" Grid.Column="5" Margin="5" Text="{Binding ElementName=SliderPC1,Path=Value}" />
+                <TextBlock FontSize="15" TextAlignment="Center" FontFamily="Open Sans" Grid.Row="2" Margin="6"
+                           Grid.ColumnSpan="3">
+                    P(C2)
+                </TextBlock>
+                <Slider Name="SliderPC2" Grid.Row="5" Margin="5" Grid.ColumnSpan="3"
+                        Minimum="0" Maximum="1" SmallChange="0.0000000001" Value="0.5" TickPlacement="BottomRight" />
+                <TextBlock Grid.Row="5" Grid.Column="5" Margin="5"
+                           Text="{Binding ElementName=SliderPC2,Path=Value}" />
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="20" TextAlignment="Center" FontFamily="Open Sans" Margin="6">Результаты</TextBlock>
+                <TextBlock Name="FalseAlarm" Grid.Row="1" Margin="8" FontFamily="Open Sans" FontSize="15"
+                           TextAlignment="Center">
+                    Вероятность ложной тревоги
+                </TextBlock>
+                <TextBox IsEnabled="False" Name="TextBoxFalseAlarm" Grid.Row="2" TextAlignment="Center"
+                         VerticalAlignment="Center" FontSize="15">
+                    Placeholder
+                </TextBox>
+                <TextBlock Name="Miss" Grid.Row="3" Margin="8" FontFamily="Open Sans" FontSize="15"
+                           TextAlignment="Center">
+                    Вероятность пропуска обнаружения
+                </TextBlock>
+                <TextBox IsEnabled="False" Name="TextBoxMiss" Grid.Row="4" TextAlignment="Center"
+                         VerticalAlignment="Center" FontSize="15">
+                    Placeholder
+                </TextBox>
+                <TextBlock Name="AmountOfRisk" Grid.Row="5" Margin="8" FontFamily="Open Sans" FontSize="15"
+                           TextAlignment="Center">
+                    Суммарная ошибка классификации
+                </TextBlock>
+                <TextBox IsEnabled="False" Name="TextBoxAmountOfRisk" Grid.Row="6" TextAlignment="Center"
+                         VerticalAlignment="Center" FontSize="15">
+                    Placeholder
+                </TextBox>
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="3" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="5" FontSize="20" TextAlignment="Center" FontFamily="Open Sans"
+                           Margin="6">
+                    Условные обозначения
+                </TextBlock>
+                <Line Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Fill="Blue" Stroke="Blue"
+                      VerticalAlignment="Center" StrokeThickness="3"
+                      X1="0" X2="1000" />
+                <Line Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Fill="Red" Stroke="Red"
+                      VerticalAlignment="Center" StrokeThickness="3"
+                      X1="0" X2="1000" />
+                <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" FontFamily="Open Sans"
+                           VerticalAlignment="Center" TextAlignment="Center">
+                    p(X / C1) P(C1)
+                </TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" FontFamily="Open Sans"
+                           VerticalAlignment="Center" TextAlignment="Center">
+                    p(X / C2) P(C2)
+                </TextBlock>
+            </Grid>
+        </Border>
+        <Border Background="Black" Name="BorderImage" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="4"
+                BorderBrush="LightGray" BorderThickness="3">
+            <Image Name="Canvas" />
+        </Border>
+
+    </Grid>
+</Window>

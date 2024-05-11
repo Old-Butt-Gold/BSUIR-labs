@@ -1,0 +1,136 @@
+﻿<Window x:Class="MIAPR_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MIAPR_5" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
+    <Window.Resources>
+        <Style x:Key="TextBlockStyle">
+            <Setter Property="Control.FontFamily" Value="Open Sans"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TextBoxStyle">
+            <Setter Property="TextBox.FontFamily" Value="Open Sans"/>
+            <Setter Property="TextBox.FontSize" Value="17"/>
+            <Setter Property="TextBox.TextAlignment" Value="Center"/>
+            <Setter Property="TextBox.VerticalAlignment" Value=" Center"/>
+            <Setter Property="Control.Margin" Value="3"></Setter>
+            <EventSetter Event="TextBox.PreviewTextInput" Handler="TextCheck"/>
+        </Style>
+        <Style x:Key="ButtonStyle">
+            <Setter Property="Control.FontFamily" Value="Open Sans" />
+            <Setter Property="Control.FontSize" Value="17" />
+            <Setter Property="Control.Background" Value="#FFF1F1F1"/>
+            <Setter Property="Control.Margin" Value="2"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan ="10" FontSize="20" Style="{StaticResource TextBlockStyle}">Обучение</TextBlock>
+                <Line Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="8" Stroke="LimeGreen" VerticalAlignment="Center" StrokeThickness="4" X1="0" X2="1000" />
+                <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">Класс 1</TextBlock>
+                <TextBlock Grid.Column="4" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">X</TextBlock>
+                <TextBlock Grid.Column="9" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">Y</TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}">Объект 1</TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}">Объект 2</TextBlock>
+                <TextBox Name="TextBoxO1X" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">-1</TextBox>
+                <TextBox Name="TextBoxO1Y" Grid.Column="8" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">0</TextBox>
+                <TextBox Name="TextBoxO2X" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">1</TextBox>
+                <TextBox Name="TextBoxO2Y" Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">1</TextBox>
+                <Line Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="8" Stroke="Aqua" VerticalAlignment="Center" StrokeThickness="4" X1="0" X2="1000" />
+                <TextBlock Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">Класс 2</TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}">Объект 1</TextBlock>
+                <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" FontSize="17" Style="{StaticResource TextBlockStyle}">Объект 2</TextBlock>
+                <TextBox Name="TextBoxO3X" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">2</TextBox>
+                <TextBox Name="TextBoxO3Y" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">0</TextBox>
+                <TextBox Name="TextBoxO4X" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">1</TextBox>
+                <TextBox Name="TextBoxO4Y" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="3" Style="{StaticResource TextBoxStyle}">-2</TextBox>
+                <Button Name="ButtonTrain" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="10" Style="{StaticResource ButtonStyle}" Click="ButtonTrain_OnClick">Обучить</Button>
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="20">Разделяющая функция</TextBlock>
+                <TextBox Name="TextBoxFunction" Grid.Row="1" IsReadOnly="True" TextAlignment="Center" FontSize="20" FontFamily="Open Sans" VerticalAlignment="Center"></TextBox>
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderBrush="LightGray" BorderThickness="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.ColumnSpan="2" Style="{StaticResource TextBlockStyle}" FontSize="20">Тестовая выборка</TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">X</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1" FontSize="17" FontWeight="Bold" Style="{StaticResource TextBlockStyle}">Y</TextBlock>
+                <TextBox Name="TextBoxOX" Grid.Column="0" Grid.Row="2" Style="{StaticResource TextBoxStyle}">0</TextBox>
+                <TextBox Name="TextBoxOY" Grid.Column="1" Grid.Row="2" Style="{StaticResource TextBoxStyle}">0</TextBox>
+                <Button Name="ButtonClassify" IsEnabled="False" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource ButtonStyle}" Click="ButtonClassify_OnClick">Классифицировать</Button>
+                <Button Name="ButtonGenerate" IsEnabled="False" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource ButtonStyle}" Click="ButtonGenerate_OnClick">Сгенерировать точки</Button>
+            </Grid>
+        </Border>
+
+        <Border Name="RightBoxBorder" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6"
+                BorderBrush="Black" BorderThickness="3" Background="Black">
+            <Image Name="Canvas" MouseLeftButtonDown="Canvas_OnMouseLeftButtonDown" />
+        </Border>
+
+    </Grid>
+</Window>

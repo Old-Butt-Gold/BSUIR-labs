@@ -1,0 +1,139 @@
+﻿<Window x:Class="MIAPR_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MIAPR_4"
+        mc:Ignorable="d"
+        Title="MIAPR_4" Height="600" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" BorderBrush="Wheat" Background="Black" BorderThickness="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="17" Padding="5" TextAlignment="Center" VerticalAlignment="Center" Background="Wheat" FontFamily="Open Sans" Grid.Row="0" Margin="6" Grid.ColumnSpan="5">
+                    Количество классов
+                </TextBlock>
+                <Slider Name="SliderClassesNumber" IsSnapToTickEnabled="True" Grid.Row="1" Margin="5"
+                        Grid.ColumnSpan="4"
+                        Minimum="1" Maximum="10" SmallChange="1" Value="1" TickPlacement="BottomRight" />
+                <TextBlock Grid.Row="1" Grid.Column="4" Background="Wheat" VerticalAlignment="Center" Padding="5" Margin="5" FontSize="14" FontFamily="Open Sans"
+                           TextAlignment="Center" Text="{Binding ElementName=SliderClassesNumber,Path=Value}" />
+                <TextBlock FontSize="17" Background="Wheat" VerticalAlignment="Center" Padding="5" TextAlignment="Center" FontFamily="Open Sans" Grid.Row="2" Margin="6"
+                           Grid.ColumnSpan="5">
+                    Количество объектов в классе
+                </TextBlock>
+                <Slider Name="SliderObjectNumber" IsSnapToTickEnabled="True" Grid.Row="3" Margin="5"
+                        Grid.ColumnSpan="4"
+                        Minimum="1" Maximum="100" SmallChange="1" Value="1" TickPlacement="BottomRight" />
+                <TextBlock Grid.Row="3" Grid.Column="4" Background="Wheat" VerticalAlignment="Center" Padding="5" FontSize="14" FontFamily="Open Sans" Margin="5"
+                           TextAlignment="Center"
+                           Text="{Binding ElementName=SliderObjectNumber,Path=Value}" />
+                <TextBlock FontSize="17" Background="Wheat" VerticalAlignment="Center" Padding="5" TextAlignment="Center" FontFamily="Open Sans" Grid.Row="4" Margin="6"
+                           Grid.ColumnSpan="5">
+                    Количество признаков объекта
+                </TextBlock>
+                <Slider Name="SliderAttributeNumber" IsSnapToTickEnabled="True" Grid.Row="5" Margin="5"
+                        Grid.ColumnSpan="4"
+                        Minimum="1" Maximum="100" SmallChange="1" Value="1" TickPlacement="BottomRight" />
+                <TextBlock Grid.Row="5" Grid.Column="4" FontSize="14" FontFamily="Open Sans" Margin="5"
+                           TextAlignment="Center" Background="Wheat" VerticalAlignment="Center" Padding="5"
+                           Text="{Binding ElementName=SliderAttributeNumber,Path=Value}" />
+                <Button Name="ButtonCreateSelection" Background="Wheat" Padding="5" Height="50" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="5"
+                        FontFamily="Open Sans" FontSize="15" Margin="7,7,7,7"
+                        Click="ButtonCreateSelection_Click"> 
+                    Создать обучающую выборку
+                </Button>
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" BorderBrush="Wheat" Background="Black" BorderThickness="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="47*" />
+                    <ColumnDefinition Width="100*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <TextBlock FontSize="17" Background="Wheat" VerticalAlignment="Center" Padding="5" TextAlignment="Center" FontFamily="Open Sans" Grid.Row="0" Margin="6,6,6,6"
+                           Grid.ColumnSpan="2">
+                    Классификация
+                </TextBlock>
+                <ScrollViewer Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2">
+                    <StackPanel Name="InputPanel" />
+                </ScrollViewer>
+                <Button Name="ButtonClassify" Background="Wheat" VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2" Margin="7,7,7,7" FontFamily="Open Sans"
+                        FontSize="15" Click="ButtonClassify_Click">
+                    Классифицировать
+                </Button>
+            </Grid>
+        </Border>
+        <Border Background="Wheat" BorderBrush="Wheat" Name="RightBoxBorder" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="4"
+                BorderThickness="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Border Name="UpperSideBox1" Grid.Column="0" Grid.Row="0"
+                        BorderBrush="Wheat" BorderThickness="3">
+                    <TextBlock FontSize="20" TextAlignment="Center" FontFamily="Open Sans" Margin="15" >
+                        Обучающая выборка
+                    </TextBlock>
+                </Border>
+                <Border Name="UpperSideBox2" Grid.Column="1" Grid.Row="0"
+                        BorderBrush="Wheat" BorderThickness="3">
+                    <TextBlock FontSize="20" TextAlignment="Center" FontFamily="Open Sans" Margin="15">
+                        Решающие функции
+                    </TextBlock>
+                </Border>
+                <Border Name="DownSideBox1" Grid.Column="0" Grid.Row="1"
+                        BorderBrush="Wheat" BorderThickness="3">
+                    <ListView Background="Black" Name="ListViewSelection" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                </Border>
+                <Border Name="DownSideBox" Grid.Column="1" Grid.Row="1"
+                        BorderBrush="Wheat" BorderThickness="3">
+                    <ListView Name="ListViewSolutions" Background="Black" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                </Border>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>
