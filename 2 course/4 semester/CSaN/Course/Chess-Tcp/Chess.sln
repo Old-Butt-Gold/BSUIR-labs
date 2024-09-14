@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessLogic", "ChessLogic\ChessLogic.csproj", "{BD697884-A31E-484B-8B52-99D8BE8E7AFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessUI", "ChessUI\ChessUI.csproj", "{1A9D6B8E-9739-47FC-AA1B-F1EA9D172388}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessServer", "ChessServer\ChessServer.csproj", "{356EE8AF-DC04-49C5-ABEB-E9C4438C6DFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessClient", "ChessClient\ChessClient.csproj", "{25696086-5532-4ABB-BADE-5BEB28A323AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD697884-A31E-484B-8B52-99D8BE8E7AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD697884-A31E-484B-8B52-99D8BE8E7AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD697884-A31E-484B-8B52-99D8BE8E7AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD697884-A31E-484B-8B52-99D8BE8E7AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9D6B8E-9739-47FC-AA1B-F1EA9D172388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9D6B8E-9739-47FC-AA1B-F1EA9D172388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9D6B8E-9739-47FC-AA1B-F1EA9D172388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9D6B8E-9739-47FC-AA1B-F1EA9D172388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356EE8AF-DC04-49C5-ABEB-E9C4438C6DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356EE8AF-DC04-49C5-ABEB-E9C4438C6DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356EE8AF-DC04-49C5-ABEB-E9C4438C6DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356EE8AF-DC04-49C5-ABEB-E9C4438C6DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25696086-5532-4ABB-BADE-5BEB28A323AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25696086-5532-4ABB-BADE-5BEB28A323AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25696086-5532-4ABB-BADE-5BEB28A323AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25696086-5532-4ABB-BADE-5BEB28A323AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

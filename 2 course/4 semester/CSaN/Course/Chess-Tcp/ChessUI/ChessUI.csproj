@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ChessClient\ChessClient.csproj" />
+      <ProjectReference Include="..\ChessLogic\ChessLogic.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\PawnB.png" />
+      <Resource Include="Assets\PawnB.png" />
+      <None Remove="Assets\BishopB.png" />
+      <Resource Include="Assets\BishopB.png" />
+      <None Remove="Assets\BishopW.png" />
+      <Resource Include="Assets\BishopW.png" />
+      <None Remove="Assets\Board.png" />
+      <Resource Include="Assets\Board.png" />
+      <None Remove="Assets\CursorB.cur" />
+      <Resource Include="Assets\CursorB.cur" />
+      <None Remove="Assets\CursorW.cur" />
+      <Resource Include="Assets\CursorW.cur" />
+      <None Remove="Assets\icon.ico" />
+      <Resource Include="Assets\icon.ico" />
+      <None Remove="Assets\KingB.png" />
+      <Resource Include="Assets\KingB.png" />
+      <None Remove="Assets\KingW.png" />
+      <Resource Include="Assets\KingW.png" />
+      <None Remove="Assets\KnightB.png" />
+      <Resource Include="Assets\KnightB.png" />
+      <None Remove="Assets\KnightW.png" />
+      <Resource Include="Assets\KnightW.png" />
+      <None Remove="Assets\PawnW.png" />
+      <Resource Include="Assets\PawnW.png" />
+      <None Remove="Assets\QueenB.png" />
+      <Resource Include="Assets\QueenB.png" />
+      <None Remove="Assets\QueenW.png" />
+      <Resource Include="Assets\QueenW.png" />
+      <None Remove="Assets\RookB.png" />
+      <Resource Include="Assets\RookB.png" />
+      <None Remove="Assets\RookW.png" />
+      <Resource Include="Assets\RookW.png" />
+      <None Remove="Assets\1.cur" />
+      <None Update="stockfish.exe">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="ContentControls\PromotionMenu.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="ContentControls\GameOverMenu.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+</Project>

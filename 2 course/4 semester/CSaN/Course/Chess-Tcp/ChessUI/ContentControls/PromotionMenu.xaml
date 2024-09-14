@@ -1,0 +1,34 @@
+<UserControl x:Class="ChessUI.ContentControls.PromotionMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ChessUI"
+             mc:Ignorable="d"
+             d:DesignHeight="125" d:DesignWidth="275">
+    <Border Width="275" Height="125" Style="{StaticResource BorderStyle}">
+        <Grid RenderOptions.BitmapScalingMode="HighQuality">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="SELECT A PIECE" Style="{StaticResource TextStyle}" FontSize="28"/>
+            
+            <UniformGrid Grid.Row="1" Rows="1" Columns="4" Cursor="Hand">
+                <Button Click="Queen_Click" Style="{StaticResource ButtonStyle}">
+                    <Image Name="ImgQueen" Source="/Assets/QueenW.png"/>
+                </Button>
+                <Button Click="Bishop_Click" Style="{StaticResource ButtonStyle}" >
+                    <Image Name="ImgBishop" Source="/Assets/BishopW.png"/>
+                </Button>
+                <Button Click="Rook_Click" Style="{StaticResource ButtonStyle}">
+                    <Image Name="ImgRook" Source="/Assets/RookW.png"/>
+                </Button>
+                <Button Click="Knight_Click" Style="{StaticResource ButtonStyle}">
+                    <Image Name="ImgKnight" Source="/Assets/KnightW.png"/>
+                </Button>
+            </UniformGrid>
+        </Grid>
+    </Border>
+</UserControl>
