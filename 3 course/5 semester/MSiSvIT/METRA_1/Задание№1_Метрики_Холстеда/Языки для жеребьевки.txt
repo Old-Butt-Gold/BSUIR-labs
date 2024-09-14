@@ -1,0 +1,19 @@
+Провести жеребьевку для каждой пары. Для жеребьевки использовать языки программирования ниже:
+
+Kotlin     
+Java       
+C#        
+C++        
+Go         
+Python    
+Ruby       
+TypeScript 
+PHP        
+JavaScript 
+Perl       
+Groovy  
+F#
+Swift
+Scala   
+
+

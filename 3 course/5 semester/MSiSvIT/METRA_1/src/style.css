@@ -1,0 +1,33 @@
+@import url('./reset.css');
+
+body {
+    background: #F0F0F0;
+}
+
+body {
+    background-color: #F8F9FA;
+}
+
+.div-result {
+    margin-top: 30px;
+}
+
+.table {
+    font-size: 1.5rem;
+    background-color: #FFFFFF;
+}
+
+.table-info {
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    max-width: 90%;
+}
+
+h5,
+.alert-success {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
