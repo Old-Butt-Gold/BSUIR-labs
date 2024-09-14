@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <LangVersion>preview</LangVersion>
+        <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Haley.WPF" Version="5.4.3.1" />
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\circle.png" />
+      <Resource Include="Assets\bg.jpg" />
+      <Resource Include="Assets\circle.png" />
+      <None Remove="Assets\ellipse.png" />
+      <Resource Include="Assets\ellipse.png" />
+      <None Remove="Assets\isosceles-triangle.png" />
+      <Resource Include="Assets\isosceles-triangle.png" />
+      <None Remove="Assets\line.png" />
+      <Resource Include="Assets\line.png" />
+      <None Remove="Assets\rectangle.png" />
+      <Resource Include="Assets\rectangle.png" />
+      <None Remove="Assets\right-triangle.png" />
+      <Resource Include="Assets\right-triangle.png" />
+      <None Remove="Assets\square.png" />
+      <Resource Include="Assets\square.png" />
+      <None Remove="Assets\triangle.png" />
+      <Resource Include="Assets\triangle.png" />
+      <None Remove="Assets\arc.png" />
+      <Resource Include="Assets\arc.png" />
+      <None Remove="Assets\Fill.png" />
+      <Resource Include="Assets\Fill.png" />
+      <None Remove="Assets\Pen.png" />
+      <None Remove="Assets\Pen (2).png" />
+      <Resource Include="Assets\Pen.png" />
+      <None Remove="Assets\icon.png" />
+      <None Remove="Assets\icon.ico" />
+      <Resource Include="Assets\icon.ico" />
+      <None Remove="Assets\logout.png" />
+      <Resource Include="Assets\exit.png" />
+      <None Remove="Assets\maximize.png" />
+      <Resource Include="Assets\maximize.png" />
+      <None Remove="Assets\minimize.png" />
+      <Resource Include="Assets\minimize.png" />
+      <None Remove="Assets\file.png" />
+      <Resource Include="Assets\file.png" />
+      <None Remove="Assets\xml.png" />
+      <None Remove="Assets\bracket-curly.png" />
+      <None Remove="Assets\json (2).png" />
+      <None Remove="bg.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SharedComponents\SharedComponents.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DynamicLoad\" />
+    </ItemGroup>
+
+</Project>

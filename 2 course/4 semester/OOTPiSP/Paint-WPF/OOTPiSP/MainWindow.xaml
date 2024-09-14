@@ -1,0 +1,119 @@
+﻿<Window x:Class="OOTPiSP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOTPiSP"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:commands="clr-namespace:OOTPiSP.Commands"
+        mc:Ignorable="d"
+        Title="Paint" Height="450" Width="800" Name="MW"
+        WindowStyle="None" AllowsTransparency="True" DataContext="{Binding MainViewModel, RelativeSource={RelativeSource Self}}"
+        Background="{Binding ElementName=BackgroundPaintPicker, Path=SelectedBrush}">
+    <WindowChrome.WindowChrome>
+            <WindowChrome CaptionHeight="5"/>
+    </WindowChrome.WindowChrome>    
+        
+    <Window.InputBindings>
+            <KeyBinding Command="{Binding ExitWindowCommand}" CommandParameter="{Binding ElementName=MW}" Key="Esc" />
+            <KeyBinding Command="{Binding RotateLeftCommand}" CommandParameter="{Binding ElementName=MW}"  Key="LeftShift" Modifiers="Shift" />
+            <KeyBinding Command="{Binding RotateRightCommand}" CommandParameter="{Binding ElementName=MW}" Key="RightShift" Modifiers="Shift" />
+            <KeyBinding Command="{Binding RotateResetCommand}" CommandParameter="{Binding ElementName=MW}" Key="LeftCtrl" Modifiers="Control" />
+            <KeyBinding Command="{Binding RotateResetCommand}" CommandParameter="{Binding ElementName=MW}" Key="RightCtrl" Modifiers="Control" />
+            <KeyBinding Command="{Binding MoveDownCommand}" CommandParameter="{Binding ElementName=MW}" Key="Down" />
+            <KeyBinding Command="{Binding MoveDownCommand}" CommandParameter="{Binding ElementName=MW}" Key="S" />
+            <KeyBinding Command="{Binding MoveUpCommand}" CommandParameter="{Binding ElementName=MW}" Key="Up" />
+            <KeyBinding Command="{Binding MoveUpCommand}" CommandParameter="{Binding ElementName=MW}" Key="W" />
+            <KeyBinding Command="{Binding MoveLeftCommand}" CommandParameter="{Binding ElementName=MW}" Key="Left" />
+            <KeyBinding Command="{Binding MoveLeftCommand}" CommandParameter="{Binding ElementName=MW}" Key="A" />
+            <KeyBinding Command="{Binding MoveRightCommand}" CommandParameter="{Binding ElementName=MW}" Key="Right" />
+            <KeyBinding Command="{Binding MoveRightCommand}" CommandParameter="{Binding ElementName=MW}" Key="D" />
+    </Window.InputBindings>
+        <DockPanel>
+                <!--Меню-->
+                <DockPanel DockPanel.Dock="Top" Background="Aquamarine" Height="40" ZIndex="1">
+                        <Menu Background="Aquamarine" DockPanel.Dock="Left" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                                <MenuItem Header="Файл" Icon="{DynamicResource File}" Margin="10">
+                                        <MenuItem Header="Сохранить">
+                                                <MenuItem Header="JSON" Command="{Binding JsonSaveCommand}" />
+                                                <MenuItem Header="XML" Command="{Binding XMLSaveCommand}" />
+                                        </MenuItem>
+                                        <Separator />
+                                        <MenuItem Header="Загрузить" >
+                                                <MenuItem Header="JSON" Command="{Binding JsonLoadCommand}" CommandParameter="{Binding ElementName=MW}" />
+                                                <MenuItem Header="XML" Command="{Binding XMLLoadCommand}" CommandParameter="{Binding ElementName=MW}"/>
+                                        </MenuItem>
+                                </MenuItem>
+                                <MenuItem Header="Очистить холст" Command="{Binding ClearCommand}" Margin="10"/>
+                                
+                                <MenuItem OverridesDefaultStyle="True">
+                                        <MenuItem.Template>
+                                                <ControlTemplate TargetType="MenuItem">
+                                                        <ContentControl Content="{TemplateBinding Header}" 
+                                                                        Margin="5" Height="Auto" Width="Auto"/>
+                                                </ControlTemplate>
+                                        </MenuItem.Template>
+                                        
+                                        <MenuItem.Header>
+                                                <hw:ColorPickerButton Content="Цвет фона" Name="BackgroundPaintPicker" SelectedBrush="LightGray" />
+                                        </MenuItem.Header>
+                                </MenuItem>
+                                
+                                <MenuItem Name="PluginSettings" Header="Плагин" Margin="10">
+                                        <MenuItem Header="Загрузить фигуры" Command="{Binding LoadPluginShapeCommand}" CommandParameter="{Binding ElementName=MW}"/>
+                                        <Separator />
+                                        <MenuItem Header="Загрузить функционал" Command="{Binding LoadPluginFunctionalityCommand}" CommandParameter="{Binding ElementName=MW}"/>
+                                </MenuItem>
+                                
+                        </Menu>
+                        
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Style="{StaticResource WindowsButtonStyle}" Content="{StaticResource Minimize}" Command="{Binding MinimizeWindowCommand}" CommandParameter="{Binding ElementName=MW}" ToolTip="Свернуть окно"/>
+                                <Button Style="{StaticResource WindowsButtonStyle}" Content="{StaticResource Maximize}" Command="{Binding MaximizeWindowCommand}" CommandParameter="{Binding ElementName=MW}" ToolTip="Развернуть окно"/>
+                                <Button Style="{StaticResource WindowsButtonStyle}" Content="{StaticResource Exit}" Command="{Binding ExitWindowCommand}" CommandParameter="{Binding ElementName=MW}" ToolTip="Закрыть"/>
+                        </StackPanel>
+                </DockPanel>
+                
+                
+                <Grid>
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="11*" />
+                        </Grid.RowDefinitions>
+                        <!-- Панель инструментов -->
+                        <Grid x:Name="ButtonGrid" Grid.Row="0" ZIndex="1" Background="Aquamarine">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <hw:ColorPickerButton Grid.Column="0" Content="{StaticResource Fill}"
+                                                  Style="{StaticResource ButtonStyle}" SelectedBrush="{Binding Path=FillSelectedBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <hw:ColorPickerButton Grid.Column="1" Content="{StaticResource Pen}"
+                                                  Style="{StaticResource ButtonStyle}" SelectedBrush="{Binding Path=StrokeSelectedBrush, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            </hw:ColorPickerButton>
+                        </Grid>
+                        
+                        <!--Отрисовка-->
+                        <Canvas Grid.Row="1" Name="Canvas" Background ="Transparent" >
+                                <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewMouseWheel">
+                                                <i:InvokeCommandAction Command="{Binding MouseWheelCommand}" PassEventArgsToCommand="True" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewMouseUp">
+                                                <i:InvokeCommandAction Command="{Binding MouseUpCommand}" PassEventArgsToCommand="True" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding MouseLeftDownCommand}" PassEventArgsToCommand="True" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding MouseRightDownCommand}" PassEventArgsToCommand="True" />
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="PreviewMouseMove">
+                                                <i:InvokeCommandAction Command="{Binding MouseMoveCommand}" PassEventArgsToCommand="True" />
+                                        </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                        </Canvas>
+                </Grid>
+        </DockPanel>
+</Window>
