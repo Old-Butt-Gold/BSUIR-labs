@@ -6,7 +6,7 @@ export class Halstead {
     private refresh() {
         this.operators = new Map();
         this.ignore = new Set();
-        let items: string[] = ['const', 'in', 'of', 'function', 'let', 'async'];
+        let items: string[] = ['const', 'in', 'of', 'function', 'let', 'async', ' ', '\r\n'];
         items.forEach(item => this.ignore.add(item));
 
         this.operators.set('in', 0);
@@ -111,7 +111,9 @@ export class Halstead {
                     }
 
                     if (symbol === '(') {
-                        this.operators.set(prevToken, (this.operators.get(prevToken) ?? 0) + 1);
+                        this.operators.set(prevToken + "()", (this.operators.get(prevToken) ?? 0) + 1);
+                        this.operators.set("(", (this.operators.get("(") ?? 0) - 1);
+                        this.operators.set(")", (this.operators.get(")") ?? 0) - 1);
                     }
 
                 } else {

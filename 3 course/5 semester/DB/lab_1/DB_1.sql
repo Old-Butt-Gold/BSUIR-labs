@@ -58,8 +58,7 @@ CREATE TABLE "seat"(
     "seat_id" SERIAL NOT NULL,
     "airplane_id" INTEGER NOT NULL,
     "seat_number" VARCHAR(10) NOT NULL,
-    "class" VARCHAR(20) NOT NULL,
-    "is_available" BOOLEAN NOT NULL DEFAULT 'DEFAULT TRUE'
+    "class" VARCHAR(20) NOT NULL
 );
 ALTER TABLE
     "seat" ADD CONSTRAINT "seat_airplane_id_seat_number_unique" UNIQUE("airplane_id", "seat_number");
@@ -85,9 +84,9 @@ CREATE TABLE "schedule"(
     "arrival_time" TIME(0) WITHOUT TIME ZONE NOT NULL
 );
 ALTER TABLE
-    "schedule" ADD PRIMARY KEY("route_id");
+    "schedule" ADD CONSTRAINT "schedule_route_id_airplane_id_unique" UNIQUE("route_id", "airplane_id");
 ALTER TABLE
-    "schedule" ADD PRIMARY KEY("airplane_id");
+    "schedule" ADD PRIMARY KEY("schedule_id");
 CREATE TABLE "ticket"(
     "ticket_id" SERIAL NOT NULL,
     "booking_id" INTEGER NOT NULL,
@@ -95,8 +94,6 @@ CREATE TABLE "ticket"(
 );
 ALTER TABLE
     "ticket" ADD PRIMARY KEY("ticket_id");
-ALTER TABLE
-    "ticket" ADD CONSTRAINT "ticket_booking_id_unique" UNIQUE("booking_id");
 CREATE TABLE "booking"(
     "booking_id" SERIAL NOT NULL,
     "passenger_id" INTEGER NOT NULL,
@@ -109,7 +106,7 @@ ALTER TABLE
 CREATE TABLE "flight"(
     "flight_id" SERIAL NOT NULL,
     "schedule_id" INTEGER NOT NULL,
-    "status" INTEGER NOT NULL,
+    "status_id" INTEGER NOT NULL,
     "scheduled_departure" TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     "scheduled_arrival" TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     "actual_departure" TIMESTAMP(0) WITHOUT TIME ZONE NULL,
@@ -123,9 +120,12 @@ CREATE TABLE "route"(
     "arrival_airport_id" INTEGER NOT NULL
 );
 ALTER TABLE
-    "route" ADD PRIMARY KEY("departure_airport_id");
+    "route" ADD CONSTRAINT "route_departure_airport_id_arrival_airport_id_unique" UNIQUE(
+        "departure_airport_id",
+        "arrival_airport_id"
+    );
 ALTER TABLE
-    "route" ADD PRIMARY KEY("arrival_airport_id");
+    "route" ADD PRIMARY KEY("route_id");
 CREATE TABLE "airline"(
     "airline_id" SERIAL NOT NULL,
     "airline_name" VARCHAR(100) NOT NULL
@@ -135,30 +135,30 @@ ALTER TABLE
 ALTER TABLE
     "airline" ADD CONSTRAINT "airline_airline_name_unique" UNIQUE("airline_name");
 ALTER TABLE
-    "flight" ADD CONSTRAINT "flight_status_foreign" FOREIGN KEY("status") REFERENCES "flight_status"("status_id");
-ALTER TABLE
-    "ticket" ADD CONSTRAINT "ticket_booking_id_foreign" FOREIGN KEY("booking_id") REFERENCES "booking"("booking_id");
-ALTER TABLE
-    "flight" ADD CONSTRAINT "flight_schedule_id_foreign" FOREIGN KEY("schedule_id") REFERENCES "schedule"("schedule_id");
-ALTER TABLE
-    "booking" ADD CONSTRAINT "booking_passenger_id_foreign" FOREIGN KEY("passenger_id") REFERENCES "passenger"("passenger_id");
+    "airplane" ADD CONSTRAINT "airplane_airline_id_foreign" FOREIGN KEY("airline_id") REFERENCES "airline"("airline_id");
 ALTER TABLE
     "boarding_pass" ADD CONSTRAINT "boarding_pass_flight_id_foreign" FOREIGN KEY("flight_id") REFERENCES "flight"("flight_id");
 ALTER TABLE
-    "airplane" ADD CONSTRAINT "airplane_airline_id_foreign" FOREIGN KEY("airline_id") REFERENCES "airline"("airline_id");
-ALTER TABLE
-    "route" ADD CONSTRAINT "route_route_id_foreign" FOREIGN KEY("route_id") REFERENCES "schedule"("route_id");
-ALTER TABLE
-    "airport" ADD CONSTRAINT "airport_city_id_foreign" FOREIGN KEY("city_id") REFERENCES "city"("city_id");
-ALTER TABLE
-    "airport" ADD CONSTRAINT "airport_airport_id_foreign" FOREIGN KEY("airport_id") REFERENCES "route"("departure_airport_id");
-ALTER TABLE
-    "city" ADD CONSTRAINT "city_country_id_foreign" FOREIGN KEY("country_id") REFERENCES "country"("country_id");
-ALTER TABLE
-    "airplane" ADD CONSTRAINT "airplane_airplane_id_foreign" FOREIGN KEY("airplane_id") REFERENCES "schedule"("airplane_id");
-ALTER TABLE
-    "boarding_pass" ADD CONSTRAINT "boarding_pass_ticket_id_foreign" FOREIGN KEY("ticket_id") REFERENCES "ticket"("ticket_id");
+    "booking" ADD CONSTRAINT "booking_passenger_id_foreign" FOREIGN KEY("passenger_id") REFERENCES "passenger"("passenger_id");
 ALTER TABLE
     "seat" ADD CONSTRAINT "seat_airplane_id_foreign" FOREIGN KEY("airplane_id") REFERENCES "airplane"("airplane_id");
 ALTER TABLE
-    "airport" ADD CONSTRAINT "airport_airport_id_foreign" FOREIGN KEY("airport_id") REFERENCES "route"("arrival_airport_id");
+    "schedule" ADD CONSTRAINT "schedule_route_id_foreign" FOREIGN KEY("route_id") REFERENCES "route"("route_id");
+ALTER TABLE
+    "flight" ADD CONSTRAINT "flight_status_id_foreign" FOREIGN KEY("status_id") REFERENCES "flight_status"("status_id");
+ALTER TABLE
+    "flight" ADD CONSTRAINT "flight_schedule_id_foreign" FOREIGN KEY("schedule_id") REFERENCES "schedule"("schedule_id");
+ALTER TABLE
+    "ticket" ADD CONSTRAINT "ticket_booking_id_foreign" FOREIGN KEY("booking_id") REFERENCES "booking"("booking_id");
+ALTER TABLE
+    "schedule" ADD CONSTRAINT "schedule_airplane_id_foreign" FOREIGN KEY("airplane_id") REFERENCES "airplane"("airplane_id");
+ALTER TABLE
+    "city" ADD CONSTRAINT "city_country_id_foreign" FOREIGN KEY("country_id") REFERENCES "country"("country_id");
+ALTER TABLE
+    "boarding_pass" ADD CONSTRAINT "boarding_pass_ticket_id_foreign" FOREIGN KEY("ticket_id") REFERENCES "ticket"("ticket_id");
+ALTER TABLE
+    "route" ADD CONSTRAINT "route_arrival_airport_id_foreign" FOREIGN KEY("arrival_airport_id") REFERENCES "airport"("airport_id");
+ALTER TABLE
+    "airport" ADD CONSTRAINT "airport_city_id_foreign" FOREIGN KEY("city_id") REFERENCES "city"("city_id");
+ALTER TABLE
+    "route" ADD CONSTRAINT "route_departure_airport_id_foreign" FOREIGN KEY("departure_airport_id") REFERENCES "airport"("airport_id");

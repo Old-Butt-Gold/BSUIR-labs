@@ -28,9 +28,11 @@ document.querySelector<HTMLButtonElement>('.btn-convert')!.addEventListener('cli
             let operatorsMap = fileContent[0];
             let operandsMap = fileContent[1];
 
-            operatorsMap.set('{}', operatorsMap.get('{') + operatorsMap.get('}'));
-            operatorsMap.set('[]', operatorsMap.get('[') + operatorsMap.get(']'));
-            operatorsMap.set('()', operatorsMap.get('(') + operatorsMap.get(')'));
+            operatorsMap.set('{}', (operatorsMap.get('{') + operatorsMap.get('}')) / 2);
+            operatorsMap.set('[]', (operatorsMap.get('[') + operatorsMap.get(']')) / 2);
+            operatorsMap.set('()', (operatorsMap.get('(') + operatorsMap.get(')')) / 2);
+
+            operatorsMap.set('()', (operatorsMap.get("()") - operatorsMap.get('if') - operatorsMap.get('for')));
 
             operatorsMap.set('{', 0);
             operatorsMap.set('}', 0);

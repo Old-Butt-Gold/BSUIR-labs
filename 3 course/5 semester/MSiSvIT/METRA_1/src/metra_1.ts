@@ -54,7 +54,7 @@ async function solveSudoku() {
 function helper(board : number[][], row : number, col : number) : boolean {
     if (col === 9) {
         col = 0;
-        row += 1;
+        row = (row + 1);
         if (row === 9) {
             return true;
         }
