@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>Spring Thyamleaf application</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Responsive navbar-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">Spring MVC</a>
+		</div>
+	</nav>
+
+	<!-- Page content-->
+	<div class="container">
+		<div class="text-center mt-5">
+		
+		
+			<!-- TODO insert code here -->
+			<form class="row g-3 needs-validation" action="#" th:action="@{/saveStudent}" th:object="${student}" method="post" novalidate>
+				<div class="col-md-4">
+					<label for="userNameInput" class="form-label">Student Name</label> 
+					<input type="text" class="form-control" id="userNameInput" required th:field="*{name}">
+					<div class="valid-feedback">Looks good!</div>
+					<div id="validationServerUserNameFeedback" class="invalid-feedback">
+						Please choose a student name.
+      				</div>
+				</div>
+				<div class="col-md-4">
+					<label for="userAgeInput" class="form-label">Student age</label> 
+					<input type="number" class="form-control" id="userAgeInput" required th:field="*{age}">
+					<div class="valid-feedback">Looks good!</div>
+					<div id="validationServerUserAgeFeedback" class="invalid-feedback">
+						Please choose a student age.
+      				</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			
+		</div>
+	</div>
+
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+</body>
+</html>

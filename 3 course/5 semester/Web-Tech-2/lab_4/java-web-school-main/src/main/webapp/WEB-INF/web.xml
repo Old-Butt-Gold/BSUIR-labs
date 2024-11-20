@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	version="6.0">
+
+	<request-character-encoding>UTF-8</request-character-encoding>
+	<response-character-encoding>UTF-8</response-character-encoding>
+
+	<servlet>
+		<description></description>
+		<display-name>MyServlet</display-name>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>edu.epam.fop.web.MyServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/MyServlet</url-pattern>
+	</servlet-mapping>
+
+	<display-name>sms</display-name>
+
+	<welcome-file-list>
+		<welcome-file>MyServlet</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>jdbcDriverClassName</param-name>
+		<param-value>org.h2.Driver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>jdbcUrl</param-name>
+		<param-value>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>userName</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>password</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>edu.epam.fop.web.MyServletContextListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>edu.epam.fop.web.MyHttpSessionListener</listener-class>
+	</listener>
+</web-app>

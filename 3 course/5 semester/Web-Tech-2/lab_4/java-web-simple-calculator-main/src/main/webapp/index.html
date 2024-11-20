@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h2>Simple Calculator</h2>
+	<form action="CalculatorServlet" method="post">
+		<div>
+			<label for="num1">Number 1:</label><br>
+			<input type="number" id="num1" name="num1" required>
+		</div>
+		<div>
+			<label for="num2">Number 2:</label><br>
+			<input type="number" id="num2" name="num2" required>
+		</div>
+		<div>
+			<label for="operation">Operation:</label><br>
+			<select id="operation" name="operation" size="4" required>
+				<option value="add">+</option>
+				<option value="subtract">-</option>
+				<option value="multiply">*</option>
+				<option value="divide">/</option>
+			</select>
+		</div>
+		<br><button type="submit">Calculate</button>
+	</form>
+	<p>Or try a quick calculation:<br>
+		<a href="CalculatorServlet?num1=2&num2=2&operation=add">2 + 2</a><br>
+		<a href="CalculatorServlet?num1=10&num2=5&operation=divide">10 / 5</a><br>
+		<a href="CalculatorServlet?num1=11&num2=1&operation=subtract">11 - 1</a><br>
+		<a href="CalculatorServlet?num1=5&num2=5&operation=multiply">5 * 5</a><br>
+	</p>
+
+</body>
+
+</html>

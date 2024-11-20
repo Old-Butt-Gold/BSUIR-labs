@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	version="6.0">
+
+	<request-character-encoding>UTF-8</request-character-encoding>
+	<response-character-encoding>UTF-8</response-character-encoding>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<description></description>
+		<display-name>GuessNumberCookieController</display-name>
+		<servlet-name>GuessNumberCookieController</servlet-name>
+		<servlet-class>edu.epam.fop.web.GuessNumberCookieController</servlet-class>
+		<init-param>
+			<param-name>minNumber</param-name>
+			<param-value>5</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxNumber</param-name>
+			<param-value>20</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GuessNumberCookieController</servlet-name>
+		<url-pattern>/GuessNumberCookieController</url-pattern>
+	</servlet-mapping>
+</web-app>

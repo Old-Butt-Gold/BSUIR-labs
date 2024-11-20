@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+	version="6.0">
+
+	<request-character-encoding>UTF-8</request-character-encoding>
+	<response-character-encoding>UTF-8</response-character-encoding>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<description></description>
+		<display-name>CommandHandler</display-name>
+		<servlet-name>CommandHandler</servlet-name>
+		<servlet-class>edu.epam.fop.web.CommandHandler</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CommandHandler</servlet-name>
+		<url-pattern>/commandHandler</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>edu.epam.fop.web.AuthorizationFilter</filter-class>
+		<init-param>
+			<param-name>teacher</param-name>
+			<param-value>viewSettings updateSettings</param-value>
+		</init-param>
+		<init-param>
+			<param-name>student</param-name>
+			<param-value>viewSettings</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>/commandHandler</url-pattern>
+	</filter-mapping>
+</web-app>

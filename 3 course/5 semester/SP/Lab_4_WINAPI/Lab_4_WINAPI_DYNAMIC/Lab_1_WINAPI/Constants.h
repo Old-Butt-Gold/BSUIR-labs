@@ -1,0 +1,78 @@
+#pragma once
+
+#include "string"
+
+#define WC_CUSTOM_LIST_VIEW L"CustomListView"
+#define SCREEN_WIDTH  GetSystemMetrics(SM_CXSCREEN)
+#define SCREEN_HEIGHT GetSystemMetrics(SM_CYSCREEN)
+
+#define FontWindowClass L"FontWindowClass"
+
+struct FileData {
+    std::wstring fileName;
+    std::wstring fileSize;
+};
+
+//ID FOR HMENU COMPONENTS
+
+#define ID_ENTER_BTN_CLICKED 0x1c
+#define ID_SELECT_FONT_BTN 0x1010
+
+#define ID_FONTS_LOAD_EDIT 0x10
+
+#define ID_COMBOBOX_HEADER 0x101
+#define ID_COMBOBOX_HEADER_SIZES 0x102
+#define ID_COMBOBOX_FILENAMES 0x103
+#define ID_COMBOBOX_FILENAMES_SIZES 0x104
+#define ID_COMBOBOX_FILESIZES 0x105
+#define ID_COMBOBOX_FILESIZES_SIZES 0x106
+
+#define ID_LIST_VIEW 0x107
+
+#define hEditX 1
+#define hEditY 3
+
+#define FONTS_DIRECTORY L"D://Fonts//"
+
+#define DEFAULT_FONT L"Segoe UI"
+#define DEFAULT_FONT_SIZE 21
+
+#define COMBOBOX_FONT_SIZES_COUNT 60
+
+struct FontSettings {
+    std::wstring fileNameFontFamily;  // Font family for file names
+    std::wstring fileNameFontPath;
+    int fileNameFontSize;             // Font size for file names
+    HFONT fileNameFontHandle;         // Handle for the file name font
+
+    std::wstring headerFontFamily;    // Font family for headers
+    std::wstring headerFontPath;
+    int headerFontSize;               // Font size for headers
+    HFONT headerFontHandle;           // Handle for the header font
+
+    std::wstring fileSizeFontFamily;  // Font family for file sizes
+    std::wstring fileSizeFontPath;
+    int fileSizeFontSize;             // Font size for file sizes
+    HFONT fileSizeFontHandle;         // Handle for the file size font
+};
+
+#define WM_CELL_CLICK (WM_USER + 1)
+
+#define WM_CELL_RCLICK (WM_USER + 2)
+
+#define WM_CELL_DBLCLICK (WM_USER + 3)
+
+#define WM_CELL_RDBLCLICK (WM_USER + 4)
+
+#define WM_HEADER_CLICK (WM_USER + 5)
+
+#define WM_HEADER_RCLICK (WM_USER + 6)
+
+#define WM_COLUMN_RESIZE (WM_USER + 7)
+
+#define WM_LISTVIEW_SCROLL (WM_USER + 8)
+
+#define WM_HEADER_DBLCLICK (WM_USER + 9)
+
+#define WM_HEADER_RDBLCLICK (WM_USER + 10)
+

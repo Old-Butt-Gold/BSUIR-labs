@@ -1,0 +1,6 @@
+@ChatMicroservice_HostAddress = http://localhost:5184
+
+GET {{ChatMicroservice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
