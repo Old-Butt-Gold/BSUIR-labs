@@ -9,11 +9,11 @@ uses
 
 type
     TString = String[20];
-    User = ^TUser;  {Указатель на элемент типа TList}
-    TUser = Record {А это наименование нашего типа "запись" обычно динамические структуры описываются через запись}
+    User = ^TUser;  {РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЌР»РµРјРµРЅС‚ С‚РёРїР° TList}
+    TUser = Record {Рђ СЌС‚Рѕ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РЅР°С€РµРіРѕ С‚РёРїР° "Р·Р°РїРёСЃСЊ" РѕР±С‹С‡РЅРѕ РґРёРЅР°РјРёС‡РµСЃРєРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РѕРїРёСЃС‹РІР°СЋС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїРёСЃСЊ}
         UserName: TString;
-        PhoneNumber: Integer;  {данные, хранимые в элементе}
-        Next: User;   {указатель на следующий элемент списка}
+        PhoneNumber: Integer;  {РґР°РЅРЅС‹Рµ, С…СЂР°РЅРёРјС‹Рµ РІ СЌР»РµРјРµРЅС‚Рµ}
+        Next: User;   {СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР°}
     end;
 
 function InputList(Count: Integer): User;
@@ -50,12 +50,12 @@ Begin
                 Element^.PhoneNumber := StrToInt(Temp);
             Except
                 IsCorrect := False;
-                Writeln('Проверьте ваши данные');
+                Writeln('РџСЂРѕРІРµСЂСЊС‚Рµ РІР°С€Рё РґР°РЅРЅС‹Рµ');
             End;
             If IsCorrect and (Length(Temp) <> 7) Then
                 Begin
                     IsCorrect := False;
-                    Writeln('Введите семизначное число');
+                    Writeln('Р’РІРµРґРёС‚Рµ СЃРµРјРёР·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ');
                 End;
         Until IsCorrect;
 
@@ -72,7 +72,7 @@ Begin
                   Inc(I);
             End
         Else
-            Writeln('Проверьте ваши данные');
+            Writeln('РџСЂРѕРІРµСЂСЊС‚Рµ РІР°С€Рё РґР°РЅРЅС‹Рµ');
     End;
     Element^.Next := nil;
     Result := Head;
@@ -86,7 +86,7 @@ Var
     PhoneSwap: Integer;
 begin
     Start := Count;
-    While Start^.Next <> nil do   //Почему Start^.Next
+    While Start^.Next <> nil do   //РџРѕС‡РµРјСѓ Start^.Next
     Begin
         Temp := Start^.next;
         While Temp^.Next <> nil do
@@ -115,7 +115,7 @@ begin
     Start := Count;
     While Start^.Next <> nil do
     begin
-        Write(Start^.UserName + '–' + IntToStr(Start^.PhoneNumber),#13#10);
+        Write(Start^.UserName + 'вЂ“' + IntToStr(Start^.PhoneNumber),#13#10);
         Start := Start^.Next;
     end;
 end;
@@ -134,12 +134,12 @@ Begin
             TempInt := StrToInt(Temp);
         Except
             IsCorrect := False;
-            Writeln('Проверьте ваши данные');
+            Writeln('РџСЂРѕРІРµСЂСЊС‚Рµ РІР°С€Рё РґР°РЅРЅС‹Рµ');
         End;
         If IsCorrect and (Length(Temp) <> 7) Then
             Begin
                 IsCorrect := False;
-                Writeln('Введите семизначное число');
+                Writeln('Р’РІРµРґРёС‚Рµ СЃРµРјРёР·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ');
             End;
     Until IsCorrect;
     Start := Count;
@@ -156,7 +156,7 @@ Var
     Start: User;
     Temp: TString;
 Begin
-    Writeln('Введите имя пользователя');
+    Writeln('Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ');
     Repeat
         Readln(Temp);
     Until Length(Temp) < 21;
@@ -182,7 +182,7 @@ Begin
             Numb := StrToInt(Str);
         Except
             IsCorrect := False;
-            Writeln('Повторите ввод');
+            Writeln('РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ');
         End;
         If IsCorrect and ((Numb > 3) or (Numb < 1)) Then
     Until IsCorrect;
@@ -196,19 +196,19 @@ Var
     Number: Integer;
     Str: TString;
 begin
-    Write('Введите количество абонентов от 2 до 6: ');
+    Write('Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°Р±РѕРЅРµРЅС‚РѕРІ РѕС‚ 2 РґРѕ 6: ');
     Repeat
         IsInCorrect := True;
         Try
             Readln(Count);
         Except
             IsInCorrect := False;
-            Writeln('Проверьте данные');
+            Writeln('РџСЂРѕРІРµСЂСЊС‚Рµ РґР°РЅРЅС‹Рµ');
         End;
         If IsIncorrect and ((Count > 6) or (Count < 2)) Then
             Begin
                 IsIncorrect := False;
-                Writeln('Проверьте ваши даннные');
+                Writeln('РџСЂРѕРІРµСЂСЊС‚Рµ РІР°С€Рё РґР°РЅРЅРЅС‹Рµ');
             End;
     Until IsIncorrect;
 
@@ -217,7 +217,7 @@ begin
     OutputList(Head);
 
     Repeat
-        Writeln('Нажмите 1 для поиска фамилии по номеру телефона'#13#10'2 для поиска телефона по фамилии'#13#10'3 чтобы выйти');
+        Writeln('РќР°Р¶РјРёС‚Рµ 1 РґР»СЏ РїРѕРёСЃРєР° С„Р°РјРёР»РёРё РїРѕ РЅРѕРјРµСЂСѓ С‚РµР»РµС„РѕРЅР°'#13#10'2 РґР»СЏ РїРѕРёСЃРєР° С‚РµР»РµС„РѕРЅР° РїРѕ С„Р°РјРёР»РёРё'#13#10'3 С‡С‚РѕР±С‹ РІС‹Р№С‚Рё');
         Str := InputChoice();
         If Str = '1' Then
             FindFromNumber(Head)

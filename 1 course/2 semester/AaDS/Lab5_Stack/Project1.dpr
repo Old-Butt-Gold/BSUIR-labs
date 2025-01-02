@@ -90,7 +90,7 @@ begin
     end;
 end;
 
-Procedure СalculationOfRang(Var Stack: IntList);
+Procedure РЎalculationOfRang(Var Stack: IntList);
 Begin
     If Peek(Stack) in ['a'..'z'] then
         Inc(Stack.Rang)
@@ -122,7 +122,7 @@ Begin
                 Begin
                     While Peek(Stack) <> '(' do
                         Begin
-                            СalculationOfRang(Stack);
+                            РЎalculationOfRang(Stack);
                             FinalAnswer := Concat(FinalAnswer, Pop(Stack));
                         End;
                     Pop(Stack);
@@ -135,7 +135,7 @@ Begin
                         Begin
                             While Not(IsEmptyStack(Stack)) and (GetPriority(Expression[I]) <= GetStackPriority(Peek(Stack))) do
                                 Begin
-                                    СalculationOfRang(Stack);
+                                    РЎalculationOfRang(Stack);
                                     FinalAnswer := Concat(FinalAnswer, Pop(Stack));
                                 End;
                             Push(Stack, Expression[I]);
@@ -144,7 +144,7 @@ Begin
         End;
     While Stack.FirstElem <> Nil do
         Begin
-            СalculationOfRang(Stack);
+            РЎalculationOfRang(Stack);
             FinalAnswer := Concat(FinalAnswer, Pop(Stack));
         End;
     Result := FinalAnswer;
@@ -154,9 +154,9 @@ Var
     Stack: IntList;
 begin
     Var Expression := InputExpression;
-    Writeln('Ваше суффиксное выражение равно = ', ConvertToSuffix(Stack, Expression));
-    Writeln('Ваш ранг равен = ', Stack.Rang);
-    Writeln('Ваше префиксное выражение равно = ', Reverse(ConvertToSuffix(Stack, Reverse(Expression))));
-    Writeln('Ваш ранг равен = ', Stack.Rang);
+    Writeln('Р’Р°С€Рµ СЃСѓС„С„РёРєСЃРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ СЂР°РІРЅРѕ = ', ConvertToSuffix(Stack, Expression));
+    Writeln('Р’Р°С€ СЂР°РЅРі СЂР°РІРµРЅ = ', Stack.Rang);
+    Writeln('Р’Р°С€Рµ РїСЂРµС„РёРєСЃРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ СЂР°РІРЅРѕ = ', Reverse(ConvertToSuffix(Stack, Reverse(Expression))));
+    Writeln('Р’Р°С€ СЂР°РЅРі СЂР°РІРµРЅ = ', Stack.Rang);
     Readln;
 end.

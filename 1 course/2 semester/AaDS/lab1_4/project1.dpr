@@ -24,19 +24,19 @@ var
     Amount: integer;
     IsCorrect: Boolean;
 begin
-    Writeln ('Введите количество номеров телефонов:');
+    Writeln ('Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРјРµСЂРѕРІ С‚РµР»РµС„РѕРЅРѕРІ:');
     Repeat
       Try
         IsCorrect := True;
         Readln(Amount);
       Except
-        Writeln('Введите корректное значение');
+        Writeln('Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ');
         IsCorrect := False;
       End;
       If (IsCorrect) And ((Amount < 1) or (Amount > 9)) Then
       Begin
         IsCorrect := False;
-        Writeln('Неправильное число');
+        Writeln('РќРµРїСЂР°РІРёР»СЊРЅРѕРµ С‡РёСЃР»Рѕ');
       End;
     Until (IsCorrect);
   InputAmount := Amount;
@@ -54,19 +54,19 @@ Begin
     for I := 1 to Amount do
     begin
         Y := X;
-        Writeln ('Введите ', I ,'-й телефонный номер:');
+        Writeln ('Р’РІРµРґРёС‚Рµ ', I ,'-Р№ С‚РµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ:');
         Repeat
           Try
             IsCorrect := True;
             Readln (Y^.AbonentNumber);
           Except
-            Writeln('Введите корректное значение');
+            Writeln('Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ');
             IsCorrect := False;
           End;
           If (IsCorrect) And ((Length(Y^.AbonentNumber) <> 3) And (Length(Y^.AbonentNumber) <> 7)) Then
           Begin
             IsCorrect := False;
-            Writeln('Введено некорректное количество цифр в номере.');
+            Writeln('Р’РІРµРґРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІ РЅРѕРјРµСЂРµ.');
           End;
         Until (IsCorrect);
         New (X);
@@ -78,7 +78,7 @@ end;
 
 procedure OutputInputData (Y: Number);
 begin
-    Writeln ('Список введённых номеров телефонов:');
+    Writeln ('РЎРїРёСЃРѕРє РІРІРµРґС‘РЅРЅС‹С… РЅРѕРјРµСЂРѕРІ С‚РµР»РµС„РѕРЅРѕРІ:');
     While Y <> nil Do
     begin
         Write (Y^.AbonentNumber + ' ');
@@ -141,7 +141,7 @@ End;
 procedure WriteSortList(NewList: Number2);
 begin
     Writeln;
-    Writeln('Список семизначных номеров');
+    Writeln('РЎРїРёСЃРѕРє СЃРµРјРёР·РЅР°С‡РЅС‹С… РЅРѕРјРµСЂРѕРІ');
     While NewList <> Nil do
         Begin
             Write(NewList^.Data + ' ');
@@ -158,7 +158,7 @@ begin
     Writeln('------------------------------------------');
     OutputInputData(List);
     Writeln;
-    Writeln ('Список номеров телефонов (справа налево):');
+    Writeln ('РЎРїРёСЃРѕРє РЅРѕРјРµСЂРѕРІ С‚РµР»РµС„РѕРЅРѕРІ (СЃРїСЂР°РІР° РЅР°Р»РµРІРѕ):');
     ReverseList(List);
     GetNewList(NewList, List);
     Sort(NewList);

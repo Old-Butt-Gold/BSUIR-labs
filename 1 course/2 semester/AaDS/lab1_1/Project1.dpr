@@ -189,18 +189,18 @@ var
     P, Q, R: Pt;
     Degree, X: integer;
 begin
-    Write('Введите степень многочлена P(x): ');
+    Write('Р’РІРµРґРёС‚Рµ СЃС‚РµРїРµРЅСЊ РјРЅРѕРіРѕС‡Р»РµРЅР° P(x): ');
     Degree := InputDegree;
     P := InputList(Degree);
 
-    Write('Введите степень многочлена Q(x): ');
+    Write('Р’РІРµРґРёС‚Рµ СЃС‚РµРїРµРЅСЊ РјРЅРѕРіРѕС‡Р»РµРЅР° Q(x): ');
     Degree := InputDegree;
     Q := InputList(Degree);
 
-    Write('Многочлен P(x) = ');
+    Write('РњРЅРѕРіРѕС‡Р»РµРЅ P(x) = ');
     OutputList(P);
 
-    Write('Многочлен Q(x) = ');
+    Write('РњРЅРѕРіРѕС‡Р»РµРЅ Q(x) = ');
     OutputList(Q);
 
     R := Add(P, Q);
@@ -208,7 +208,7 @@ begin
     OutputList(R);
 
     Writeln('Q(X) = P(X)? ', Equality(P, Q));
-    Write('Введите значение X: ');
+    Write('Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ X: ');
     X := InputPoint();
     Writeln('Q(X) = ', Meaning(Q, X));
     Writeln('P(X) = ', Meaning(P, X));

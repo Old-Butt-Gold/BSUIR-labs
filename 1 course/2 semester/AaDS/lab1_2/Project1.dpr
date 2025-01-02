@@ -59,7 +59,7 @@ End;
 
 Procedure CountDown(Var Head: TPElem; Gap: Integer);
 Begin
-    Write('Номера выбывших: ');
+    Write('РќРѕРјРµСЂР° РІС‹Р±С‹РІС€РёС…: ');
     While Head <> Head^.Next do
         Begin
             For Var I := 1 To Gap - 2 do
@@ -72,7 +72,7 @@ End;
 
 Procedure WriteFirstList(Head: TPElem; Data: Integer);
 Begin
-    Write('Первоначальный список: ');
+    Write('РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅС‹Р№ СЃРїРёСЃРѕРє: ');
     For Var I := 1 to Data do
         Begin
             Write(Head^.Data:3);
@@ -90,7 +90,7 @@ begin
             Head := CreateRoundList(Data);
             WriteFirstList(Head, Data);
             CountDown(Head, Gap);
-            Writeln('Количество игроков: ', Data:4, '':4, 'Победитель: ', Head^.Data:4);
+            Writeln('РљРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂРѕРєРѕРІ: ', Data:4, '':4, 'РџРѕР±РµРґРёС‚РµР»СЊ: ', Head^.Data:4);
             Writeln;
         End;
 
