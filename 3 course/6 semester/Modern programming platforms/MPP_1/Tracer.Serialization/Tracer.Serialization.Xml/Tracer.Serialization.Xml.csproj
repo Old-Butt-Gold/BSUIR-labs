@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Tracer.Core">
+        <HintPath>..\..\Tracer\Tracer.Serialization.Abstractions\bin\Debug\net9.0\Tracer.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="Tracer.Serialization.Abstractions">
+        <HintPath>..\..\Tracer\Tracer.Serialization.Abstractions\bin\Debug\net9.0\Tracer.Serialization.Abstractions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

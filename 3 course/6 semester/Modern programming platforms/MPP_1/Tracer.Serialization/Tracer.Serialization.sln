@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Json", "Tracer.Serialization.Json\Tracer.Serialization.Json.csproj", "{CE6193F5-C558-460F-8C3F-B76AD8038DAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer.Serialization.Xml", "Tracer.Serialization.Xml\Tracer.Serialization.Xml.csproj", "{B510C0B9-DA2F-40E6-A33A-BE2908594985}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE6193F5-C558-460F-8C3F-B76AD8038DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6193F5-C558-460F-8C3F-B76AD8038DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6193F5-C558-460F-8C3F-B76AD8038DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6193F5-C558-460F-8C3F-B76AD8038DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B510C0B9-DA2F-40E6-A33A-BE2908594985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B510C0B9-DA2F-40E6-A33A-BE2908594985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B510C0B9-DA2F-40E6-A33A-BE2908594985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B510C0B9-DA2F-40E6-A33A-BE2908594985}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
