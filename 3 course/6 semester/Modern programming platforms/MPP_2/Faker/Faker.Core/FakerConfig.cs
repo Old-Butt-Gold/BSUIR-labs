@@ -24,10 +24,6 @@ public class FakerConfig
 
     public IValueGenerator? GetGenerator(Type objectType, MemberInfo member)
     {
-        var item = _customGenerators.GetValueOrDefault((objectType, member));
-        // сделано для случая, что после использования генератора свойство больше мы не будем трогать,
-        // а если тип вложенный, то сам тип вложенный будет null, и снова использовать этот генератор не придется
-        _customGenerators.Remove((objectType, member)); 
-        return item;
+        return _customGenerators.GetValueOrDefault((objectType, member));
     }
 }
