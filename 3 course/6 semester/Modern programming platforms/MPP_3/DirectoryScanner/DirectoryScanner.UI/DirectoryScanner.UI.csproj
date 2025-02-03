@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DirectoryScanner.Core\DirectoryScanner.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Folder.png" />
+      <Resource Include="Assets\Folder.png" />
+      <None Remove="Assets\File.png" />
+      <None Remove="Assets\285688_file_empty_icon.png" />
+      <None Remove="Assets\8664862_file_lines_icon.png" />
+      <Resource Include="Assets\File.png" />
+    </ItemGroup>
+
+</Project>

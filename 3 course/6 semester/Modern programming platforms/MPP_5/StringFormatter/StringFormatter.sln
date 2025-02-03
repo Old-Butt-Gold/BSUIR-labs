@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringFormatter.Core", "StringFormatter.Core\StringFormatter.Core.csproj", "{A4D10567-19F0-4D4D-A1E9-CDBD901DB3D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringFormatter.Core.Tests", "StringFormatter.Core.Tests\StringFormatter.Core.Tests.csproj", "{13537A09-88FA-4605-9262-E77B327C8736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4D10567-19F0-4D4D-A1E9-CDBD901DB3D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D10567-19F0-4D4D-A1E9-CDBD901DB3D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D10567-19F0-4D4D-A1E9-CDBD901DB3D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D10567-19F0-4D4D-A1E9-CDBD901DB3D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13537A09-88FA-4605-9262-E77B327C8736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13537A09-88FA-4605-9262-E77B327C8736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13537A09-88FA-4605-9262-E77B327C8736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13537A09-88FA-4605-9262-E77B327C8736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
