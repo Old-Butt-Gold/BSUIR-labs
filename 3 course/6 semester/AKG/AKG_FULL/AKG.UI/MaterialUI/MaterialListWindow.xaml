@@ -1,0 +1,39 @@
+﻿<Window x:Class="AKG.UI.MaterialUI.MaterialListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Materials Editor" Height="450" Width="300">
+    <Window.Resources>
+        <Style TargetType="Expander">
+            <Setter Property="Margin" Value="0 5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="#FFF0F0F0"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        
+        <Style TargetType="ListViewItem">
+            <Setter Property="Padding" Value="5 2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <ListView ItemsSource="{Binding Models}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Expander Header="{Binding ModelName}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Materials.Count, StringFormat='Materials: {0}'}"/>
+                            <ListView ItemsSource="{Binding Materials}" MouseDoubleClick="Control_OnMouseDoubleClick">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Key}" Cursor="Hand" FontSize="14"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Expander>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

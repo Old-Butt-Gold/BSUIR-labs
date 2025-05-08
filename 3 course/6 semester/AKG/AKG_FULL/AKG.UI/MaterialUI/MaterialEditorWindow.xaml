@@ -1,0 +1,80 @@
+﻿<Window x:Class="AKG.UI.MaterialUI.MaterialEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:AKG.UI.Converters"
+        Title="Edit Material" Height="400" Width="400">
+    <Window.Resources>
+        <converters:ColorVectorConverter x:Key="ColorVectorConverter" />
+        <converters:Vector3ToStringConverter x:Key="Vector3ToStringConverter" />
+    </Window.Resources>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel  Margin="8">
+                <!-- Текстуры -->
+                <TextBlock Text="Diffuse Map" />
+                <TextBox Text="{Binding Material.DiffuseMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Emissive Map" />
+                <TextBox Text="{Binding Material.EmissiveMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Normal Map" />
+                <TextBox Text="{Binding Material.NormalMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="AO Map" />
+                <TextBox Text="{Binding Material.AoMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="MRAO Map" />
+                <TextBox Text="{Binding Material.MraoMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Specular Map" />
+                <TextBox Text="{Binding Material.SpecularMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Metallic Map" />
+                <TextBox Text="{Binding Material.MetallicMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Roughness Map" />
+                <TextBox Text="{Binding Material.RoughnessMap, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Bump Map" />
+                <TextBox Text="{Binding Material.BumpMap, UpdateSourceTrigger=Default}" />
+
+                <!-- Коэффициенты -->
+                <TextBlock Text="Bump Scale" />
+                <TextBox Text="{Binding Material.BumpScale, UpdateSourceTrigger=Default}" />
+
+                <!-- Цвета (используем ColorVectorConverter) -->
+                <TextBlock Text="Ambient Coefficient (Ka)" />
+                <TextBox Text="{Binding Material.Ka, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Diffuse Coefficient (Kd)" />
+                <TextBox Text="{Binding Material.Kd, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Specular Coefficient (Ks)" />
+                <TextBox Text="{Binding Material.Ks, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Emissive Coefficient (Ke)" />
+                <TextBox Text="{Binding Material.Ke, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Shininess (Ns)" />
+                <TextBox Text="{Binding Material.Shininess, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Metallic (Pm)" />
+                <TextBox Text="{Binding Material.Pm, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Roughness (Pr)" />
+                <TextBox Text="{Binding Material.Pr, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Ambient Color (AmbientColor)" />
+                <TextBox Text="{Binding Material.AmbientColor, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Diffuse Color (DiffuseColor)" />
+                <TextBox Text="{Binding Material.DiffuseColor, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <TextBlock Text="Specular Color (SpecularColor)" />
+                <TextBox Text="{Binding Material.SpecularColor, Converter={StaticResource Vector3ToStringConverter}, UpdateSourceTrigger=Default}" />
+
+                <Button Content="Save" Command="{Binding SaveCommand}" Margin="0,10,0,0" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

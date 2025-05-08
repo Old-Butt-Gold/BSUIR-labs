@@ -1,0 +1,50 @@
+﻿<Window x:Class="AKG.UI.LightsUI.LightEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:converters="clr-namespace:AKG.UI.Converters"
+        mc:Ignorable="d"
+        Title="Edit Light" Height="200" Width="350">
+    <Window.Resources>
+        <converters:Vector3ToStringConverter x:Key="Vector3Converter" />
+        <converters:ColorVectorConverter x:Key="ColorVectorConverter" />
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Position -->
+        <TextBlock Text="Position:" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding TempPosition, Converter={StaticResource Vector3Converter}, Mode=TwoWay}"
+                 Grid.Row="0" Grid.Column="1" Margin="5" />
+
+        <!-- Color -->
+        <TextBlock Text="Color (0-255):" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding TempColor, Converter={StaticResource ColorVectorConverter}, Mode=TwoWay}"
+                 Grid.Row="1" Grid.Column="1" Margin="5" />
+        <!-- Кнопка выбора цвета -->
+        <Button Content="Pick" Grid.Row="1" Grid.Column="2" Margin="5" Click="PickColor_Click"/>
+
+        <!-- Intensity -->
+        <TextBlock Text="Intensity:" Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding TempIntensity, Mode=TwoWay}"
+                 Grid.Row="2" Grid.Column="1" Margin="5" Grid.ColumnSpan="2"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" 
+                    HorizontalAlignment="Right" Margin="5">
+            <Button Content="OK" Width="75" Margin="5" Click="OKButton_Click"/>
+            <Button Content="Cancel" Width="75" Margin="5" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,168 @@
+﻿<Window x:Class="AKG.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        xmlns:viewModels="clr-namespace:AKG.UI.MVVM.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:objects="clr-namespace:AKG.Core.Objects;assembly=AKG.Core"
+        xmlns:enum="clr-namespace:AKG.Core.Enum;assembly=AKG.Core"
+        mc:Ignorable="d"
+        Title="3D Obj Viewer" Loaded="MainWindow_OnLoaded" WindowState="Maximized"
+        FocusManager.FocusedElement="{Binding ElementName=ImgDisplay}">
+    <Window.DataContext>
+        <viewModels:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="ModelInfoTemplate">
+            <Border Background="LightGray" Padding="5">
+                <TextBlock Text="{Binding SelectedModelInfo}" TextWrapping="Wrap" />
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Name="StackPanel" Orientation="Horizontal" Background="LightGray">
+            <Button Focusable="False" x:Name="BtnLoad" Content="Load .obj" Margin="5" Padding="5"
+                    Command="{Binding LoadFileCommand}" />
+            <Button Focusable="False" x:Name="BtnLoadBg" Content="Load Background" Margin="5" Padding="5"
+                    Command="{Binding LoadBackgroundCommand}" />
+            <Button Focusable="False" x:Name="BtnClear" Content="Clear Screen" Margin="5" Padding="5"
+                    Command="{Binding ClearSceneCommand}" />
+            <Button Focusable="False" Content="Edit Camera" Margin="5" Padding="5"
+                    Command="{Binding EditCameraCommand}" />
+            <Button Focusable="False" Content="Edit Lights" Margin="5" Padding="5"
+                    Command="{Binding EditLightsCommand}" />
+            <Button Focusable="False" Content="Edit Materials" Margin="5" Padding="5"
+                    Command="{Binding OpenMaterialEditorCommand}" />
+            <TextBlock Text="{Binding Fps, StringFormat=FPS: {0:F1}}" VerticalAlignment="Center" Margin="15,0,5,0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Foreground Color:" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <Button Focusable="False" Content="Pick Color" Command="{Binding PickForegroundColorCommand}"
+                        Width="100" Height="30" Margin="0 0 5 0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Background Color:" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <Button Focusable="False" Content="Pick Color" Command="{Binding PickBackgroundColorCommand}"
+                        Width="100" Height="30" Margin="0 0 5 0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Highlight Color:" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <Button Focusable="False" Content="Pick Color" Command="{Binding PickHighlightColorCommand}"
+                        Width="100" Height="30" />
+            </StackPanel>
+            <Button Focusable="False" Content="Model Info" ClickMode="Press" Command="{Binding ToggleModelInfoCommand}"
+                    Margin="10" Padding="5" />
+
+            <Popup x:Name="ModelInfoPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=StackPanel}"
+                   IsOpen="{Binding IsModelInfoVisible}" StaysOpen="False">
+                <ContentControl Content="{Binding}" ContentTemplate="{StaticResource ModelInfoTemplate}" />
+            </Popup>
+            <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False"
+                      SelectedValue="{Binding SelectedRenderMode}" SelectedValuePath="Tag" Margin="5">
+                <ComboBoxItem Content="Wireframe" Tag="{x:Static enum:RenderMode.Wireframe}" />
+                <ComboBoxItem Content="Filled Triangles Lambert"
+                              Tag="{x:Static enum:RenderMode.FilledTrianglesLambert}" />
+                <ComboBoxItem Content="Filled Triangles Phong" Tag="{x:Static enum:RenderMode.FilledTrianglesPhong}" />
+                <ComboBoxItem Content="Filled Triangles Average Face Normal Phong"
+                              Tag="{x:Static enum:RenderMode.FilledTrianglesAverageFaceNormalPhong}" />
+                <ComboBoxItem Content="Texture" Tag="{x:Static enum:RenderMode.Texture}" />
+                <ComboBoxItem Content="Texture Ray Tracing" Tag="{x:Static enum:RenderMode.TextureRayTracing}" />
+            </ComboBox>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Name="ImagePanel" Background="LightGray" HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+            <Image Focusable="True" Name="ImgDisplay" SnapsToDevicePixels="True"
+                   Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="{Binding WriteableBitmap}" Cursor="Hand">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseWheel">
+                        <i:InvokeCommandAction Command="{Binding MouseWheelCommand}" PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding MouseMoveCommand}" PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding MouseLeftButtonDownCommand}"
+                                               PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseRightButtonDown">
+                        <i:InvokeCommandAction Command="{Binding MouseRightButtonDownCommand}"
+                                               PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="KeyDown">
+                        <i:InvokeCommandAction Command="{Binding KeyDownCommand}" PassEventArgsToCommand="True" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical"
+                    HorizontalAlignment="Right" VerticalAlignment="Top" ZIndex="1">
+            <TextBlock Text="Camera AXIS" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+            <Canvas Margin="10" Width="150" Height="150">
+
+                <Ellipse Width="150" Height="150" Stroke="Gray" Fill="#33000000" />
+
+                <Line Stroke="Red" X1="75" Y1="75"
+                      X2="{Binding AxisXEnd.X}" Y2="{Binding AxisXEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <Line Stroke="Green" X1="75" Y1="75"
+                      X2="{Binding AxisYEnd.X}" Y2="{Binding AxisYEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <Line Stroke="Blue" X1="75" Y1="75"
+                      X2="{Binding AxisZEnd.X}" Y2="{Binding AxisZEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <!-- Текст для положительных осей -->
+                <TextBlock Text="X" Foreground="Red" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisXText.X}"
+                           Canvas.Top="{Binding AxisXText.Y}" />
+
+                <TextBlock Text="Y" Foreground="Green" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisYText.X}"
+                           Canvas.Top="{Binding AxisYText.Y}" />
+
+                <TextBlock Text="Z" Foreground="Blue" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisZText.X}"
+                           Canvas.Top="{Binding AxisZText.Y}" />
+
+                <!-- Линии для отрицательных осей -->
+                <Line Stroke="Red" X1="75" Y1="75"
+                      X2="{Binding AxisXNegativeEnd.X}" Y2="{Binding AxisXNegativeEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <Line Stroke="Green" X1="75" Y1="75"
+                      X2="{Binding AxisYNegativeEnd.X}" Y2="{Binding AxisYNegativeEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <Line Stroke="Blue" X1="75" Y1="75"
+                      X2="{Binding AxisZNegativeEnd.X}" Y2="{Binding AxisZNegativeEnd.Y}"
+                      StrokeThickness="3" StrokeEndLineCap="Round" />
+
+                <!-- Текст для отрицательных осей -->
+                <TextBlock Text="-X" Foreground="Red" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisXNegativeText.X}"
+                           Canvas.Top="{Binding AxisXNegativeText.Y}" />
+
+                <TextBlock Text="-Y" Foreground="Green" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisYNegativeText.X}"
+                           Canvas.Top="{Binding AxisYNegativeText.Y}" />
+
+                <TextBlock Text="-Z" Foreground="Blue" FontWeight="Bold"
+                           Canvas.Left="{Binding AxisZNegativeText.X}"
+                           Canvas.Top="{Binding AxisZNegativeText.Y}" />
+            </Canvas>
+        </StackPanel>
+
+    </Grid>
+</Window>
